@@ -1,0 +1,36 @@
+.custom-item {
+    display: flex;
+    align-items: center;
+  }
+  
+ion-card-content .estiloBotones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .title-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .title {
+    margin: 0 10px; /* Espacio entre el título y las líneas */
+  }
+  
+  .left-line,
+  .right-line {
+    flex: 1;
+    height: 1px;
+    background-color: black;
+    margin: 0;
+    border: none;
+  }
+  
+  .left-line {
+    margin-right: 10px; /* Espacio entre el título y la línea izquierda */
+  }
+  
+  .right-line {
+    margin-left: 10px; /* Espacio entre el título y la línea derecha */
+  }

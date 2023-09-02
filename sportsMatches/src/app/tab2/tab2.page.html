@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card style="--background: #1C9852;">
+    <ion-card-content style="color: white;">
+      
+      <div style="display:flex; align-items:center;">
+        <ion-label style="font-weight: bold;">Deporte:</ion-label>
+          <ion-select aria-label="Deportes" interface="popover" placeholder="Elige un deporte" style="color: white; --padding-start: calc(50% - 60px);">
+            <ion-select-option value="futbol">Fútbol</ion-select-option>
+            <ion-select-option value="baloncesto">Baloncesto</ion-select-option>
+            <ion-select-option value="bolos">Bolos</ion-select-option>
+          </ion-select>
+      </div>
+
+      <div class="estiloBotones" style="flex-direction: column;">
+        <ion-button shape="round" style="--background: white; color: #1C9852;" size="small">BUSCAR JUGADOR</ion-button>
+        <ion-button shape="round" style="--background: white; color: #1C9852;" size="small">BUSCAR EQUIPO</ion-button>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <br>
+
+  <div class="title-container">
+    <hr class="left-line">
+    <h3 class="title">Jugadores cercanos</h3>
+    <hr class="right-line">
+  </div>
+
+  <br>
+
+  <ion-card *ngFor="let jugador of jugadoresCercanos">
+
+    <ion-card-content>
+      <ion-item>
+      <ion-avatar slot="start" style="width: 80px; height: 80px;">
+        <img alt="Foto perfil" src="{{jugador.foto}}">
+      </ion-avatar>
+
+      <ion-label>
+        {{jugador.nombre}}<br>
+        {{jugador.edad}}<br>
+        {{jugador.solicitud}}<br>
+        <span style="color:#1C9852; font-weight: bold;">{{jugador.deporte}}</span>
+      </ion-label>
+
+      <ion-icon name="chatbubble-ellipses" slot="end" size="large" [routerLink]="['/chat']"></ion-icon>
+    </ion-item>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

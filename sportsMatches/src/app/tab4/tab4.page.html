@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  
+  <ion-fab vertical="top" horizontal="start" edge>
+
+    <ion-fab-button size="small" style="--background: #1C9852;">
+      <ion-icon name="help"></ion-icon>
+    </ion-fab-button>
+
+  </ion-fab>
+  <ion-fab vertical="top" horizontal="end" edge>
+
+    <ion-fab-button size="small" style="--background: #1C9852;">
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+
+  </ion-fab>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="alinFoto">
+    <ion-avatar>
+      <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+    </ion-avatar>
+    <br>
+    <ion-button shape="round" color="medium" size="small">Subir foto</ion-button>
+  </div>
+
+  <br>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-input label="Nombre de usuario" label-placement="floating" fill="outline" placeholder="Ingresa tu nombre de usuario" value="Santi"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input label="Fecha de nacimiento" type="date" label-placement="floating" fill="outline"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-input label="Nombre / apodo" label-placement="floating" fill="outline" placeholder="Ingresa tu nombre o apodo" value="Kaeru"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input label="Teléfono" type="number" label-placement="floating" fill="outline" placeholder="Ingresa tu número de teléfono" value="3156295111"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="alinBotones">
+    <ion-button shape="round" color="success">GUARDAR CAMBIOS</ion-button>
+    <ion-button shape="round" color="danger">CERRAR SESIÓN</ion-button>
+  </div>
+</ion-content>

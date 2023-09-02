@@ -1,0 +1,34 @@
+.alinBotones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.alinFoto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+}
+
+ion-avatar {
+    width: 125px;
+    height: 125px;
+}
+
+ion-header {
+    position: relative;
+  }
+  
+  ion-fab {
+    position: absolute;
+    top: 10px;
+    z-index: 999;
+  }
+  
+
+  

@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab slot="fixed" vertical="top" horizontal="end">
+    <ion-fab-button style="--background: #1C9852;" (click)="insert()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div *ngIf="mostrarSitios">
+    
+  <ion-card *ngFor="let myDatos of datos; let i = index">
+
+    <img alt="Silhouette of mountains" src="{{myDatos.datImagen}}" />
+
+    <ion-card-header>
+      <ion-card-title>{{myDatos.datNombre}}
+        <ion-icon color="success" name="create"></ion-icon>
+      <ion-icon color="danger" name="trash" (click)="removeDatos(myDatos.datId)"></ion-icon>
+      </ion-card-title>
+      <ion-card-subtitle>{{myDatos.datApellido}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{myDatos.datDeporte}}
+    </ion-card-content>
+
+  </ion-card>
+  </div>
+
+  <div *ngIf="mostrarParques">
+  <ion-card *ngFor="let myDatos of datos; let i = index">
+
+    <img alt="Silhouette of mountains" src="{{myDatos.datImagen}}" />
+
+    <ion-card-header>
+      <ion-card-title>{{myDatos.datNombre}}
+        <ion-icon color="success" name="create"></ion-icon>
+      <ion-icon color="danger" name="trash"></ion-icon>
+      </ion-card-title>
+      
+      <ion-card-subtitle>{{myDatos.datApellido}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{myDatos.datDeporte}}
+    </ion-card-content>
+
+  </ion-card>
+  </div>
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button style="--background: #1C9852;">
+        <ion-icon name="funnel"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button style="--background: #1C9852;" (click)="mostrarParques = true; mostrarSitios = false;">
+          <ion-icon name="leaf" style="color: white"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button style="--background: #1C9852;" (click)="mostrarSitios = true; mostrarParques = false;">
+          <ion-icon name="football" style="color: white"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button style="--background: #1C9852;" (click)="limpiarFiltro()">
+          <ion-icon name="ban" style="color: white"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+  <br>
+  <div class="title-container">
+    <hr class="left-line">
+    <h3 class="title">Torneos creados</h3>
+    <hr class="right-line">
+  </div>
+  
+  <div *ngIf="torneos.length === 0" class="no-torneos">
+    <p>No has creado ningún torneo. Crea uno!</p>
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button style="--background: #1C9852;" id="crearTorneo">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-alert
+    trigger="crearTorneo"
+    header="Elige la cantidad de equipos a participar"
+    [buttons]="alertButtons"
+    [inputs]="alertInputs"
+    ></ion-alert>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,39 @@
+.title-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .title {
+    margin: 0 10px;
+    color:#1C9852; /* Espacio entre el título y las líneas */
+  }
+  
+  .left-line,
+  .right-line {
+    flex: 1;
+    height: 1px;
+    background-color: #1C9852;
+    margin: 0;
+    border: none;
+  }
+  
+  .left-line {
+    margin-right: 10px; /* Espacio entre el título y la línea izquierda */
+  }
+  
+  .right-line {
+    margin-left: 10px; /* Espacio entre el título y la línea derecha */
+  }
+  
+  .no-torneos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .no-torneos p {
+    text-align: center;
+  }
+  
+  
