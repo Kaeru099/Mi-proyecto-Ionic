@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ConexionService } from '../services/conexion.service';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
+import { InsertDatosPage } from './insert-datos/insert-datos.page';
 
 @Component({
   selector: 'app-tab1',
@@ -13,7 +14,8 @@ export class Tab1Page {
   
   constructor(private conexion: ConexionService,
               private alertCtrl: AlertController,
-              private toastController: ToastController) {}
+              private toastController: ToastController,
+              private modalCtrl: ModalController) {}
   
   ngOnInit() {
     this.visualizaDatos()
@@ -126,7 +128,13 @@ export class Tab1Page {
   }
 
   insert(){
-    
+    this.modalCtrl.create({
+      component: InsertDatosPage
+    })
+    .then((modal) => {
+      modal.present()
+      return modal.onDidDismiss
+    })
   }
 
 

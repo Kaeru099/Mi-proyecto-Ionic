@@ -30,4 +30,13 @@ export class ConexionService {
     ))
   }
 
+  insertDatos(data:any):Observable<any>{
+    return this.http
+    .post(this.url+'/insertDatos', JSON.stringify(data))
+    .pipe(tap(() => {
+      this.refresh$.next()
+    } 
+    ))
+  }
+
 }

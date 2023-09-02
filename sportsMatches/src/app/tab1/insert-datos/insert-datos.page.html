@@ -6,7 +6,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <form action="">
+  <form [formGroup]="form" (submit)="onSubmit()" action="">
     <ion-item>
 
       <ion-input type="text" placeholder="Ingresa el nombre" formControlName="datNombre" required>
@@ -15,7 +15,7 @@
     </ion-item>
     <ion-item>
 
-      <ion-input type="text" placeholder="Ingresa el apellido" formControlName="datapellido" required>
+      <ion-input type="text" placeholder="Ingresa el apellido" formControlName="datApellido" required>
       </ion-input>
 
     </ion-item>
@@ -38,7 +38,7 @@
 
     </ion-item>
 
-    <ion-button type="submit"></ion-button>
+    <ion-button type="submit" [disabled]="form.invalid">Enviar</ion-button>
   </form>
 
 
