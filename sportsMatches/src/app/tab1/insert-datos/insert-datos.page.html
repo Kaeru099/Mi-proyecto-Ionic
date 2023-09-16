@@ -38,7 +38,7 @@
 
     </ion-item>
 
-    <ion-button type="submit" [disabled]="form.invalid">Enviar</ion-button>
+    <ion-button type="submit" [disabled]="form.invalid">{{isUpdate? 'Actualizar': 'Crear'}}</ion-button>
   </form>
 
 

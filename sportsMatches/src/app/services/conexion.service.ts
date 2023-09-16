@@ -39,4 +39,13 @@ export class ConexionService {
     ))
   }
 
+  updateDatos(data:any):Observable<any>{
+    return this.http
+    .post(this.url+'/updateDatos', JSON.stringify(data))
+    .pipe(tap(() => {
+      this.refresh$.next()
+    } 
+    ))
+  }
+
 }

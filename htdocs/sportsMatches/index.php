@@ -63,4 +63,42 @@ $app->post('/removeDatos', function ($request, $response, $args) {  //Defino los
     ->withHeader('Content-Type', 'application/json');
 });
 
+$app->post('/insertDatos', function ($request, $response, $args) {  //Defino los servicios  $app->post('/updateVeces', function ($request, $response)
+	try{
+		$json = $request->getBody();
+		$data = json_decode($json, true);
+		$db =  getDB(); //Carga los datos
+		$sth = $db->prepare("INSERT INTO datos
+							 (datNombre, datApellido, datEdad, datDeporte, datImagen)
+							 VALUES (?, ? ,? ,?, ?)");//Insertamos información
+        $sth->execute(array($data['datNombre'], $data['datApellido'], $data['datEdad'], $data['datDeporte'], $data['datImagen'])); //Sustituimos y ejecutamos la consulta
+		$response->getBody()->write('{"error":"ok"}'); //Cuando la conexión halla terminado
+		
+	}catch(PDOException $e){
+
+			$response->getBody()->write('{"error":{"texto":'.$e->getMessage().'}}'); //En caso que se halla generado algún error
+		}
+    return $response
+    ->withHeader('Content-Type', 'application/json');
+});
+
+$app->post('/updateDatos', function ($request, $response, $args) {  //Defino los servicios  $app->post('/updateVeces', function ($request, $response)
+	try{
+		$json = $request->getBody();
+		$data = json_decode($json, true);
+		$db =  getDB(); //Carga los datos
+		$sth = $db->prepare("UPDATE datos
+							 SET datNombre = ?, datApellido = ?, datEdad = ?, datDeporte = ?, datImagen = ?
+							 WHERE datId = ?");//Insertamos información
+        $sth->execute(array($data['datNombre'], $data['datApellido'], $data['datEdad'], $data['datDeporte'], $data['datImagen'], $data['datId'])); //Sustituimos y ejecutamos la consulta
+		$response->getBody()->write('{"error":"ok"}'); //Cuando la conexión halla terminado
+		
+	}catch(PDOException $e){
+
+			$response->getBody()->write('{"error":{"texto":'.$e->getMessage().'}}'); //En caso que se halla generado algún error
+		}
+    return $response
+    ->withHeader('Content-Type', 'application/json');
+});
+
 $app->run();

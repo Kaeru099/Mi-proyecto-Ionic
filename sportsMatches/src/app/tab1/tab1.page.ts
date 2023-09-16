@@ -137,5 +137,14 @@ export class Tab1Page {
     })
   }
 
+  updateDatos(datos:any){
+    this.modalCtrl.create({
+      component: InsertDatosPage, componentProps: {datos}
+    })
+    .then((modal) => {
+      modal.present()
+      return modal.onDidDismiss
+    })
+  }
 
 }
