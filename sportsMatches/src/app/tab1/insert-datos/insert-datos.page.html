@@ -6,6 +6,14 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-alert
+  trigger="present-alert"
+  header="Select your favorite color"
+  [buttons]="alertButtons"
+  [inputs]="alertInputs"
+  ></ion-alert>
+
+  <div *ngIf="isUpdate">
   <form [formGroup]="form" (submit)="onSubmit()" action="">
     <ion-item>
 
@@ -40,7 +48,44 @@
 
     <ion-button type="submit" [disabled]="form.invalid">{{isUpdate? 'Actualizar': 'Crear'}}</ion-button>
   </form>
+  </div>
 
+  <div *ngIf="isUpdatep">
+  <form [formGroup]="formp" (submit)="onSubmit()" action="">
+    <ion-item>
+
+      <ion-input type="text" placeholder="Ingresa el nombre" formControlName="nombre_parque" required>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+
+      <ion-input type="text" placeholder="Ingresa la direccion" formControlName="direccion_parque" required>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+
+      <ion-input type="text" placeholder="Ingresa el barrio" formControlName="barrio_parque" required>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+      
+      <ion-input type="text" placeholder="Ingresa el deporte" formControlName="deportes_parque" required>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+
+      <ion-input type="text" placeholder="Ingresa URL imagen" formControlName="foto_parque" required>
+      </ion-input>
+
+    </ion-item>
+
+    <ion-button type="submit" [disabled]="formp.invalid">{{isUpdatep? 'Actualizar': 'Crear'}}</ion-button>
+  </form>
+  </div>
 
   <!-- <ion-header collapse="condense">
     <ion-toolbar>

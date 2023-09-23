@@ -9,9 +9,17 @@
   </ion-refresher>
 
   <ion-fab slot="fixed" vertical="top" horizontal="end">
-    <ion-fab-button style="--background: #1C9852;" (click)="insert()">
+    <ion-fab-button style="--background: #1C9852;">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button style="--background: #1C9852;" (click)="insert()">
+        <ion-icon name="leaf" style="color: white"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button style="--background: #1C9852;" (click)="insert()">
+        <ion-icon name="football" style="color: white"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
   </ion-fab>
 
   <div *ngIf="mostrarSitios">
@@ -36,21 +44,21 @@
   </div>
 
   <div *ngIf="mostrarParques">
-  <ion-card *ngFor="let myDatos of datos; let i = index">
+  <ion-card *ngFor="let parque of parques; let i = index">
 
-    <img alt="Silhouette of mountains" src="{{myDatos.datImagen}}" />
+    <img alt="{{parque.nombre_parque}}" src="{{parque.foto_parque}}" />
 
     <ion-card-header>
-      <ion-card-title>{{myDatos.datNombre}}
-        <ion-icon color="success" name="create"></ion-icon>
-        <ion-icon color="danger" name="trash"></ion-icon>
+      <ion-card-title>{{parque.nombre_parque}}
+        <ion-icon color="success" name="create" (click)="updateParques(parque)"></ion-icon>
+        <ion-icon color="danger" name="trash" (click)="removeParques(parque.id_parque)"></ion-icon>
       </ion-card-title>
       
-      <ion-card-subtitle>{{myDatos.datApellido}}</ion-card-subtitle>
+      <ion-card-subtitle>{{parque.direccion_parque}}</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
-      {{myDatos.datDeporte}}
+      {{parque.deportes_parque}}
     </ion-card-content>
 
   </ion-card>

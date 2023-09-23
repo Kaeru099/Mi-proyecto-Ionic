@@ -48,4 +48,26 @@ export class ConexionService {
     ))
   }
 
+  consultaParques():Observable<any>{
+    return this.http.get(this.url+'/consultaParques')
+  }
+
+  removeParques(id_parque:any){
+    return this.http
+    .post(this.url+'/removeDatos', JSON.stringify(id_parque))
+    .pipe(tap(() => {
+      this.refresh$.next()
+    } 
+    ))
+  }
+
+  updateParques(data:any):Observable<any>{
+    return this.http
+    .post(this.url+'/updateParques', JSON.stringify(data))
+    .pipe(tap(() => {
+      this.refresh$.next()
+    } 
+    ))
+  }
+
 }

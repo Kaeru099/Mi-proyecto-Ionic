@@ -11,6 +11,7 @@ import { InsertDatosPage } from './insert-datos/insert-datos.page';
 export class Tab1Page {
   
   datos:any
+  parques:any
   
   constructor(private conexion: ConexionService,
               private alertCtrl: AlertController,
@@ -25,6 +26,11 @@ export class Tab1Page {
     this.conexion.consultaDatos().subscribe(
       data => {
         this.datos = data
+      }
+    )
+    this.conexion.consultaParques().subscribe(
+      data => {
+        this.parques = data
       }
     )
   }
@@ -117,11 +123,17 @@ export class Tab1Page {
     });
     toast.present();
   }
-
+  
   doRefresh(event: any){
     this.conexion.consultaDatos().subscribe(
       response => {
         this.datos = response
+        event.target.complete();
+      }
+    )
+    this.conexion.consultaParques().subscribe(
+      response => {
+        this.parques = response
         event.target.complete();
       }
     )
@@ -136,10 +148,42 @@ export class Tab1Page {
       return modal.onDidDismiss
     })
   }
-
+  
   updateDatos(datos:any){
     this.modalCtrl.create({
       component: InsertDatosPage, componentProps: {datos}
+    })
+    .then((modal) => {
+      modal.present()
+      return modal.onDidDismiss
+    })
+  }
+
+  removeParques(id_parque:any) {
+    let remove:any = {}
+    remove['id_parque'] = id_parque
+    this.alertCtrl.create({
+      header: 'Eliminar',
+      message : '¿Está seguro que desea ELIMINAR?',
+      buttons:[
+        {text: 'Cancelar'},
+        {text: 'Eliminar',
+         handler:() => {
+          this.conexion.removeParques(remove).subscribe(
+            data => {
+              this.presentToast()
+            }
+          )
+         },
+      },
+      ],
+    })
+    .then((myAlert) => myAlert.present())
+  }
+  
+  updateParques(parques:any){
+    this.modalCtrl.create({
+      component: InsertDatosPage, componentProps: {parques}
     })
     .then((modal) => {
       modal.present()

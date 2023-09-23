@@ -1,3 +1,4 @@
+import { trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
@@ -10,15 +11,40 @@ import { ConexionService } from 'src/app/services/conexion.service';
 })
 export class InsertDatosPage implements OnInit {
 
+
   @Input() datos!: Partial<any>
   isUpdate:boolean = false
+
+  @Input() parques!: Partial<any>
+  isUpdatep:boolean = false
 
   constructor(private modalCtrl: ModalController,
               private conexion:ConexionService) { }
 
   ngOnInit() {
+    trigger
     this.updateDatos()
+    this.updateParques()
   }
+
+  public alertButtons = ['OK'];
+  public alertInputs = [
+    {
+      label: 'Red',
+      type: 'radio',
+      value: 'red',
+    },
+    {
+      label: 'Blue',
+      type: 'radio',
+      value: 'blue',
+    },
+    {
+      label: 'Green',
+      type: 'radio',
+      value: 'green',
+    },
+  ];
 
   form = new FormGroup({
     datNombre: new FormControl('', [
@@ -71,7 +97,34 @@ export class InsertDatosPage implements OnInit {
         }
       )
     }
-    
+    if(this.isUpdatep){
+      const dat = {
+        id_parque: parseInt(this.parques['id_parque']),
+        nombre_parque: this.formp.value.nombre_parque,
+        direccion_parque: this.formp.value.direccion_parque,
+        barrio_parque: this.formp.value.barrio_parque,
+        deportes_parque: this.formp.value.deportes_parque,
+        foto_parque: this.formp.value.foto_parque
+      }
+      this.conexion.updateParques(dat).subscribe(
+        data => {
+          console.log('Registro actualizado')
+          this.closeModal()
+        }, error => {
+          console.log('No se pudo actualizar')
+        }
+        )
+    }else{
+      const dat = this.formp.value
+      this.conexion.insertDatos(dat).subscribe(
+        data => {
+          console.log('Registro guardado')
+          this.closeModal()
+        }, error => {
+          console.log('No se pudo guardar')
+        }
+      )
+    }
   }
 
   async closeModal(){
@@ -88,6 +141,43 @@ export class InsertDatosPage implements OnInit {
           datEdad: this.datos['datEdad'],
           datDeporte: this.datos['datDeporte'],
           datImagen: this.datos['datImagen']
+        }
+      )
+    }
+  }
+
+  formp = new FormGroup({
+    nombre_parque: new FormControl('', [
+      Validators.minLength(3),
+      Validators.required
+    ]),
+    direccion_parque: new FormControl('', [
+      Validators.minLength(4),
+      Validators.required
+    ]),
+    barrio_parque: new FormControl('', [
+      Validators.required
+    ]),
+    deportes_parque: new FormControl('', [
+      Validators.minLength(5),
+      Validators.required
+    ]),
+    foto_parque: new FormControl('', [
+      Validators.minLength(3),
+      Validators.required
+    ])
+  })
+
+  updateParques(){
+    if(this.parques){
+      this.isUpdatep = true
+      this.formp.patchValue(
+        {
+          nombre_parque: this.parques['nombre_parque'],
+          direccion_parque: this.parques['direccion_parque'],
+          barrio_parque: this.parques['barrio_parque'],
+          deportes_parque: this.parques['deportes_parque'],
+          foto_parque: this.parques['foto_parque']
         }
       )
     }
