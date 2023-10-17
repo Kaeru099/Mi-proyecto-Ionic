@@ -61,6 +61,15 @@ export class ConexionService {
     ))
   }
 
+  insertParques(data:any):Observable<any>{
+    return this.http
+    .post(this.url+'/insertParques', JSON.stringify(data))
+    .pipe(tap(() => {
+      this.refresh$.next()
+    } 
+    ))
+  }
+
   updateParques(data:any):Observable<any>{
     return this.http
     .post(this.url+'/updateParques', JSON.stringify(data))

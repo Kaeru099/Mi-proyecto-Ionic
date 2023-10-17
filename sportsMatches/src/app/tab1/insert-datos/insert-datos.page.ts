@@ -10,13 +10,14 @@ import { ConexionService } from 'src/app/services/conexion.service';
   styleUrls: ['./insert-datos.page.scss'],
 })
 export class InsertDatosPage implements OnInit {
-
-
+  
   @Input() datos!: Partial<any>
   isUpdate:boolean = false
+  insertarD:boolean = false
 
   @Input() parques!: Partial<any>
   isUpdatep:boolean = false
+  insertarP:boolean = false
 
   constructor(private modalCtrl: ModalController,
               private conexion:ConexionService) { }
@@ -25,6 +26,9 @@ export class InsertDatosPage implements OnInit {
     trigger
     this.updateDatos()
     this.updateParques()
+
+    this.insertarD = !this.isUpdate;
+    this.insertarP = !this.isUpdatep;
   }
 
   public alertButtons = ['OK'];
@@ -87,6 +91,7 @@ export class InsertDatosPage implements OnInit {
         }
         )
     }else{
+      this.insertarD = true
       const dat = this.form.value
       this.conexion.insertDatos(dat).subscribe(
         data => {
@@ -115,8 +120,9 @@ export class InsertDatosPage implements OnInit {
         }
         )
     }else{
+      this.insertarP = true
       const dat = this.formp.value
-      this.conexion.insertDatos(dat).subscribe(
+      this.conexion.insertParques(dat).subscribe(
         data => {
           console.log('Registro guardado')
           this.closeModal()
