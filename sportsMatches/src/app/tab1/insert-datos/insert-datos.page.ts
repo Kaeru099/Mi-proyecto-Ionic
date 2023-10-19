@@ -1,8 +1,8 @@
-import { trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { ConexionService } from 'src/app/services/conexion.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-insert-datos',
@@ -10,45 +10,35 @@ import { ConexionService } from 'src/app/services/conexion.service';
   styleUrls: ['./insert-datos.page.scss'],
 })
 export class InsertDatosPage implements OnInit {
-  
+  public alertButtons = ['Siguiente'];
+  public alertInputs = [
+    {
+      label: 'Parque',
+      type: 'radio',
+      value: 'parque',
+      checked: true
+    },
+    {
+      label: 'Sitio',
+      type: 'radio',
+      value: 'sitio',
+    }
+  ];
+
   @Input() datos!: Partial<any>
   isUpdate:boolean = false
-  insertarD:boolean = false
 
   @Input() parques!: Partial<any>
   isUpdatep:boolean = false
-  insertarP:boolean = false
 
   constructor(private modalCtrl: ModalController,
               private conexion:ConexionService) { }
 
   ngOnInit() {
-    trigger
-    this.updateDatos()
-    this.updateParques()
+  this.updateDatos();
+  this.updateParques();
+}
 
-    this.insertarD = !this.isUpdate;
-    this.insertarP = !this.isUpdatep;
-  }
-
-  public alertButtons = ['OK'];
-  public alertInputs = [
-    {
-      label: 'Red',
-      type: 'radio',
-      value: 'red',
-    },
-    {
-      label: 'Blue',
-      type: 'radio',
-      value: 'blue',
-    },
-    {
-      label: 'Green',
-      type: 'radio',
-      value: 'green',
-    },
-  ];
 
   form = new FormGroup({
     datNombre: new FormControl('', [
@@ -91,7 +81,6 @@ export class InsertDatosPage implements OnInit {
         }
         )
     }else{
-      this.insertarD = true
       const dat = this.form.value
       this.conexion.insertDatos(dat).subscribe(
         data => {
@@ -120,7 +109,6 @@ export class InsertDatosPage implements OnInit {
         }
         )
     }else{
-      this.insertarP = true
       const dat = this.formp.value
       this.conexion.insertParques(dat).subscribe(
         data => {
