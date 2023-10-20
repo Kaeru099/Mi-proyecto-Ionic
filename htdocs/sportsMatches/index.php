@@ -26,7 +26,7 @@ $app->get('/', function (Request $request, Response $response, $args) {
 $app->get('/consultaDatos', function ($request, $response, $args) {  //Defino los servicios
 	try{
 		$db =  getDB(); //Carga los datos
-		$sth = $db->prepare("SELECT datId, datNombre, datApellido, datEdad, datDeporte, datImagen FROM datos");//Consulta
+		$sth = $db->prepare("SELECT id_sitio, nombre_sitio, horario_sitio, num_informacion, direccion_sitio, barrio_sitio, imagen_sitio FROM datos");//Consulta
 		$sth->execute(); //Ejecutamos la consulta
 		$test = $sth->fetchAll(PDO::FETCH_ASSOC);//Guardar los resultados de la consulta
 		//Verificar si se ha cargado algo  
@@ -52,8 +52,8 @@ $app->post('/removeDatos', function ($request, $response, $args) {  //Defino los
 		$data = json_decode($json, true);
 		$db =  getDB(); //Carga los datos
 		$sth = $db->prepare("DELETE FROM datos
-							 WHERE datId = ?");//Insertamos información
-        $sth->execute(array($data['datId'])); //Sustituimos y ejecutamos la consulta
+							 WHERE id_sitio = ?");//Insertamos información
+        $sth->execute(array($data['id_sitio'])); //Sustituimos y ejecutamos la consulta
 		$response->getBody()->write('{"error":"ok"}'); //Cuando la conexión halla terminado
 		
 	}catch(PDOException $e){
@@ -70,9 +70,9 @@ $app->post('/insertDatos', function ($request, $response, $args) {  //Defino los
 		$data = json_decode($json, true);
 		$db =  getDB(); //Carga los datos
 		$sth = $db->prepare("INSERT INTO datos
-							 (datNombre, datApellido, datEdad, datDeporte, datImagen)
-							 VALUES (?, ? ,? ,?, ?)");//Insertamos información
-        $sth->execute(array($data['datNombre'], $data['datApellido'], $data['datEdad'], $data['datDeporte'], $data['datImagen'])); //Sustituimos y ejecutamos la consulta
+							 (nombre_sitio, horario_sitio, num_informacion, direccion_sitio, barrio_sitio, imagen_sitio)
+							 VALUES (?, ? ,? ,?, ?, ?)");//Insertamos información
+        $sth->execute(array($data['nombre_sitio'], $data['horario_sitio'], $data['num_informacion'], $data['direccion_sitio'], $data['barrio_sitio'], $data['imagen_sitio'])); //Sustituimos y ejecutamos la consulta
 		$response->getBody()->write('{"error":"ok"}'); //Cuando la conexión halla terminado
 		
 	}catch(PDOException $e){
@@ -89,9 +89,9 @@ $app->post('/updateDatos', function ($request, $response, $args) {  //Defino los
 		$data = json_decode($json, true);
 		$db =  getDB(); //Carga los datos
 		$sth = $db->prepare("UPDATE datos
-							 SET datNombre = ?, datApellido = ?, datEdad = ?, datDeporte = ?, datImagen = ?
-							 WHERE datId = ?");//Insertamos información
-        $sth->execute(array($data['datNombre'], $data['datApellido'], $data['datEdad'], $data['datDeporte'], $data['datImagen'], $data['datId'])); //Sustituimos y ejecutamos la consulta
+							 SET nombre_sitio = ?, horario_sitio = ?, num_informacion = ?, direccion_sitio = ?, barrio_sitio = ?, imagen_sitio = ?
+							 WHERE id_sitio = ?");//Insertamos información
+        $sth->execute(array($data['nombre_sitio'], $data['horario_sitio'], $data['num_informacion'], $data['direccion_sitio'], $data['barrio_sitio'], $data['imagen_sitio'], $data['id_sitio'])); //Sustituimos y ejecutamos la consulta
 		$response->getBody()->write('{"error":"ok"}'); //Cuando la conexión halla terminado
 		
 	}catch(PDOException $e){

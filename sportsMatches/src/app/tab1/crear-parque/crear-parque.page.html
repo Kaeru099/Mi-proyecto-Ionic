@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Crear parque</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <form [formGroup]="formp" (submit)="onSubmit()" action="">
+    <ion-item>
+
+      <ion-input type="text" placeholder="Ingresa el nombre" formControlName="nombre_parque" required>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+
+      <ion-input type="text" placeholder="Ingresa la direccion" formControlName="direccion_parque" required>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+
+      <ion-input type="text" placeholder="Ingresa el barrio" formControlName="barrio_parque" required>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+      
+      <ion-input type="text" placeholder="Ingresa el deporte" formControlName="deportes_parque" required>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+
+      <ion-input type="text" placeholder="Ingresa URL imagen" formControlName="foto_parque" required>
+      </ion-input>
+
+    </ion-item>
+
+    <ion-button type="submit" [disabled]="formp.invalid">Crear</ion-button>
+  </form>
+
+</ion-content>

@@ -1,17 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>insertDatos</ion-title>
+    <ion-title>Actualizar Datos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <ion-alert
-  trigger="presentAlert"
-  header="¿Qué desea crear?"
-  [buttons]="alertButtons"
-  [inputs]="alertInputs"
-  ></ion-alert>
 
   <div *ngIf="isUpdate">
   <form [formGroup]="form" (submit)="onSubmit()" action="">
@@ -46,7 +39,7 @@
 
     </ion-item>
 
-    <ion-button type="submit" [disabled]="form.invalid">{{isUpdate? 'Actualizar': 'Crear'}}</ion-button>
+    <ion-button type="submit" [disabled]="form.invalid">Actualizar</ion-button>
   </form>
   </div>
 
@@ -83,7 +76,7 @@
 
     </ion-item>
 
-    <ion-button type="submit" [disabled]="formp.invalid">{{isUpdatep? 'Actualizar': 'Crear'}}</ion-button>
+    <ion-button type="submit" [disabled]="formp.invalid">Actualizar</ion-button>
   </form>
   </div>
 

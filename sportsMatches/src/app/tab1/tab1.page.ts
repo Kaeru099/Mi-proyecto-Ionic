@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ConexionService } from '../services/conexion.service';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { InsertDatosPage } from './insert-datos/insert-datos.page';
+import { CrearParquePage } from './crear-parque/crear-parque.page';
+import { CrearSitioPage } from './crear-sitio/crear-sitio.page';
 
 @Component({
   selector: 'app-tab1',
@@ -35,24 +37,24 @@ export class Tab1Page {
     )
   }
 
-  /* parques = [
-    {
-      img: '',
-      nombre: 'Parque El Vergel',
-      direccion: '',
-      barrio: '',
-      actividades: ''
-    },
-    {
-      img: '',
-      nombre: 'Parque La Revolución',
-      direccion: '',
-      barrio: '',
-      actividades: ''
-    },
-    {
-      img: '',
-      nombre: 'Parque La Merced',
+    /* parques = [
+      {
+        img: '',
+        nombre: 'Parque El Vergel',
+        direccion: '',
+        barrio: '',
+        actividades: ''
+      },
+      {
+        img: '',
+        nombre: 'Parque La Revolución',
+        direccion: '',
+        barrio: '',
+        actividades: ''
+      },
+      {
+        img: '',
+        nombre: 'Parque La Merced',
       direccion: '',
       barrio: '',
       actividades: ''
@@ -96,7 +98,7 @@ export class Tab1Page {
 
   removeDatos(datId:any) {
     let remove:any = {}
-    remove['datId'] = datId
+    remove['id_sitio'] = datId
     this.alertCtrl.create({
       header: 'Eliminar',
       message : '¿Está seguro que desea ELIMINAR?',
@@ -139,9 +141,19 @@ export class Tab1Page {
     )
   }
 
-  insert(){
+  insertP(){
     this.modalCtrl.create({
-      component: InsertDatosPage
+      component: CrearParquePage
+    })
+    .then((modal) => {
+      modal.present()
+      return modal.onDidDismiss
+    })
+  }
+
+  insertD(){
+    this.modalCtrl.create({
+      component: CrearSitioPage
     })
     .then((modal) => {
       modal.present()

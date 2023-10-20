@@ -10,6 +10,14 @@ const routes: Routes = [
   {
     path: 'insert-datos',
     loadChildren: () => import('./insert-datos/insert-datos.module').then( m => m.InsertDatosPageModule)
+  },
+  {
+    path: 'crear-parque',
+    loadChildren: () => import('./crear-parque/crear-parque.module').then( m => m.CrearParquePageModule)
+  },
+  {
+    path: 'crear-sitio',
+    loadChildren: () => import('./crear-sitio/crear-sitio.module').then( m => m.CrearSitioPageModule)
   }
 ];
 

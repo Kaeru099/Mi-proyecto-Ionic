@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { ConexionService } from 'src/app/services/conexion.service';
-import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-insert-datos',
@@ -10,20 +9,6 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./insert-datos.page.scss'],
 })
 export class InsertDatosPage implements OnInit {
-  public alertButtons = ['Siguiente'];
-  public alertInputs = [
-    {
-      label: 'Parque',
-      type: 'radio',
-      value: 'parque',
-      checked: true
-    },
-    {
-      label: 'Sitio',
-      type: 'radio',
-      value: 'sitio',
-    }
-  ];
 
   @Input() datos!: Partial<any>
   isUpdate:boolean = false
@@ -41,22 +26,26 @@ export class InsertDatosPage implements OnInit {
 
 
   form = new FormGroup({
-    datNombre: new FormControl('', [
+    nombre_sitio: new FormControl('', [
       Validators.minLength(3),
       Validators.required
     ]),
-    datApellido: new FormControl('', [
+    horario_sitio: new FormControl('', [
       Validators.minLength(4),
       Validators.required
     ]),
-    datEdad: new FormControl('', [
+    num_informacion: new FormControl('', [
       Validators.required
     ]),
-    datDeporte: new FormControl('', [
+    direccion_sitio: new FormControl('', [
       Validators.minLength(5),
       Validators.required
     ]),
-    datImagen: new FormControl('', [
+    barrio_sitio: new FormControl('', [
+      Validators.minLength(3),
+      Validators.required
+    ])
+    imagen_sitio: new FormControl('', [
       Validators.minLength(3),
       Validators.required
     ])
@@ -66,10 +55,10 @@ export class InsertDatosPage implements OnInit {
     if(this.isUpdate){
       const dat = {
         datId: parseInt(this.datos['datId']),
-        datNombre: this.form.value.datNombre,
-        datApellido: this.form.value.datApellido,
-        datEdad: this.form.value.datEdad,
-        datDeporte: this.form.value.datDeporte,
+        nombre_sitio: this.form.value.nombre_sitio,
+        horario_sitio: this.form.value.horario_sitio,
+        num_informacion: this.form.value.num_informacion,
+        direccion_sitio: this.form.value.direccion_sitio,
         datImagen: this.form.value.datImagen
       }
       this.conexion.updateDatos(dat).subscribe(
@@ -130,10 +119,10 @@ export class InsertDatosPage implements OnInit {
       this.isUpdate = true
       this.form.patchValue(
         {
-          datNombre: this.datos['datNombre'],
-          datApellido: this.datos['datApellido'],
-          datEdad: this.datos['datEdad'],
-          datDeporte: this.datos['datDeporte'],
+          nombre_sitio: this.datos['nombre_sitio'],
+          horario_sitio: this.datos['horario_sitio'],
+          num_informacion: this.datos['num_informacion'],
+          direccion_sitio: this.datos['direccion_sitio'],
           datImagen: this.datos['datImagen']
         }
       )

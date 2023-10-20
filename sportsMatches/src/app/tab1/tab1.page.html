@@ -13,31 +13,31 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="bottom">
-      <ion-fab-button style="--background: #1C9852;" (click)="insert()">
+      <ion-fab-button style="--background: #1C9852;" (click)="insertP()">
         <ion-icon name="leaf" style="color: white"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button style="--background: #1C9852;" (click)="insert()">
-        <ion-icon name="football" style="color: white"></ion-icon>
+      <ion-fab-button style="--background: #1C9852;">
+        <ion-icon name="football" style="color: white" (click)="insertD()"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 
   <div *ngIf="mostrarSitios">
     
-  <ion-card *ngFor="let myDatos of datos; let i = index">
+  <ion-card *ngFor="let sitio of datos; let i = index">
 
-    <img alt="Silhouette of mountains" src="{{myDatos.datImagen}}" />
+    <img alt="Silhouette of mountains" src="{{sitio.imagen_sitio}}" />
 
     <ion-card-header>
-      <ion-card-title>{{myDatos.datNombre}}
-        <ion-icon color="success" name="create" (click)="updateDatos(myDatos)"></ion-icon>
-      <ion-icon color="danger" name="trash" (click)="removeDatos(myDatos.datId)"></ion-icon>
+      <ion-card-title>{{sitio.nombre_sitio}}
+        <ion-icon color="success" name="create" (click)="updateDatos(sitio)"></ion-icon>
+      <ion-icon color="danger" name="trash" (click)="removeDatos(sitio.id_sitio)"></ion-icon>
       </ion-card-title>
-      <ion-card-subtitle>{{myDatos.datApellido}}</ion-card-subtitle>
+      <ion-card-subtitle>{{sitio.horario_sitio}}</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
-      {{myDatos.datDeporte}}
+      {{sitio.num_informacion}}
     </ion-card-content>
 
   </ion-card>
