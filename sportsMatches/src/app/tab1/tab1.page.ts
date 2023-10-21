@@ -31,8 +31,8 @@ export class Tab1Page {
       }
     )
     this.conexion.consultaParques().subscribe(
-      data => {
-        this.parques = data
+      datap => {
+        this.parques = datap
       }
     )
   }
@@ -96,9 +96,9 @@ export class Tab1Page {
     this.mostrarSitios = true;
   }
 
-  removeDatos(datId:any) {
+  removeDatos(id_sitio:any) {
     let remove:any = {}
-    remove['id_sitio'] = datId
+    remove['id_sitio'] = id_sitio
     this.alertCtrl.create({
       header: 'Eliminar',
       message : '¿Está seguro que desea ELIMINAR?',
@@ -182,7 +182,7 @@ export class Tab1Page {
         {text: 'Eliminar',
          handler:() => {
           this.conexion.removeParques(remove).subscribe(
-            data => {
+            datap => {
               this.presentToast()
             }
           )

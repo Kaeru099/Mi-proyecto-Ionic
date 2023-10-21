@@ -21,9 +21,9 @@ export class ConexionService {
     return this.http.get(this.url+'/consultaDatos')
   }
 
-  removeDatos(datId:any){
+  removeDatos(id_sitio:any){
     return this.http
-    .post(this.url+'/removeDatos', JSON.stringify(datId))
+    .post(this.url+'/removeDatos', JSON.stringify(id_sitio))
     .pipe(tap(() => {
       this.refresh$.next()
     } 
@@ -54,25 +54,25 @@ export class ConexionService {
 
   removeParques(id_parque:any){
     return this.http
-    .post(this.url+'/removeDatos', JSON.stringify(id_parque))
+    .post(this.url+'/removeParques', JSON.stringify(id_parque))
     .pipe(tap(() => {
       this.refresh$.next()
     } 
     ))
   }
 
-  insertParques(data:any):Observable<any>{
+  insertParques(datap:any):Observable<any>{
     return this.http
-    .post(this.url+'/insertParques', JSON.stringify(data))
+    .post(this.url+'/insertParques', JSON.stringify(datap))
     .pipe(tap(() => {
       this.refresh$.next()
     } 
     ))
   }
 
-  updateParques(data:any):Observable<any>{
+  updateParques(datap:any):Observable<any>{
     return this.http
-    .post(this.url+'/updateParques', JSON.stringify(data))
+    .post(this.url+'/updateParques', JSON.stringify(datap))
     .pipe(tap(() => {
       this.refresh$.next()
     } 

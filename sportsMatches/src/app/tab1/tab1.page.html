@@ -33,11 +33,16 @@
         <ion-icon color="success" name="create" (click)="updateDatos(sitio)"></ion-icon>
       <ion-icon color="danger" name="trash" (click)="removeDatos(sitio.id_sitio)"></ion-icon>
       </ion-card-title>
-      <ion-card-subtitle>{{sitio.horario_sitio}}</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
-      {{sitio.num_informacion}}
+      <strong>Horario: </strong>{{sitio.horario_sitio}}
+      <br>
+      <strong>Número de información: </strong>{{sitio.num_informacion}}
+      <br>
+      <strong>Dirección: </strong>{{sitio.direccion_sitio}}
+      <br>
+      <strong>Barrio: </strong>{{sitio.barrio_sitio}}
     </ion-card-content>
 
   </ion-card>
@@ -53,12 +58,15 @@
         <ion-icon color="success" name="create" (click)="updateParques(parque)"></ion-icon>
         <ion-icon color="danger" name="trash" (click)="removeParques(parque.id_parque)"></ion-icon>
       </ion-card-title>
-      
-      <ion-card-subtitle>{{parque.direccion_parque}}</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
-      {{parque.deportes_parque}}
+      <strong>Deportes: </strong>{{parque.deportes_parque}}
+      <br>
+      <strong>Dirección: </strong>{{parque.direccion_parque}}
+      <br>
+      <strong>Barrio: </strong>{{parque.barrio_parque}}
+      
     </ion-card-content>
 
   </ion-card>

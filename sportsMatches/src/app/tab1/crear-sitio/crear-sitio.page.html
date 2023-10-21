@@ -9,31 +9,37 @@
   <form [formGroup]="form" (submit)="onSubmit()" action="">
     <ion-item>
 
-      <ion-input type="text" placeholder="Ingresa el nombre" formControlName="datNombre" required>
+      <ion-input type="text" placeholder="Ingresa el nombre del sitio" formControlName="nombre_sitio" required>
       </ion-input>
 
     </ion-item>
     <ion-item>
 
-      <ion-input type="text" placeholder="Ingresa el apellido" formControlName="datApellido" required>
+      <ion-input type="text" placeholder="Ingresa el horario" formControlName="horario_sitio" required>
       </ion-input>
 
     </ion-item>
     <ion-item>
 
-      <ion-input type="tel" placeholder="Ingresa la edad" formControlName="datEdad" required>
+      <ion-input type="tel" placeholder="Ingresa un número de información" formControlName="num_informacion" required>
       </ion-input>
 
     </ion-item>
     <ion-item>
       
-      <ion-input type="text" placeholder="Ingresa el deporte" formControlName="datDeporte" required>
+      <ion-input type="text" placeholder="Ingresa la dirección" formControlName="direccion_sitio" required>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+      
+      <ion-input type="text" placeholder="Ingresa el barrio" formControlName="barrio_sitio" required>
       </ion-input>
 
     </ion-item>
     <ion-item>
 
-      <ion-input type="text" placeholder="Ingresa URL imagen" formControlName="datImagen" required>
+      <ion-input type="text" placeholder="Ingresa URL imagen" formControlName="imagen_sitio" required>
       </ion-input>
 
     </ion-item>

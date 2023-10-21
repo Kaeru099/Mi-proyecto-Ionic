@@ -41,10 +41,10 @@ export class CrearParquePage implements OnInit {
     ])
   })
 
-  onSubmit = () => {
-    const dat = this.formp.value
-      this.conexion.insertParques(dat).subscribe(
-        data => {
+  onSubmitp = () => {
+    const datp = this.formp.value
+      this.conexion.insertParques(datp).subscribe(
+        datap => {
           console.log('Registro guardado')
           this.closeModal()
         }, error => {

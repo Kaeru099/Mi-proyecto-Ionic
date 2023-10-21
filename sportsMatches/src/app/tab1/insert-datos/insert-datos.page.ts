@@ -44,7 +44,7 @@ export class InsertDatosPage implements OnInit {
     barrio_sitio: new FormControl('', [
       Validators.minLength(3),
       Validators.required
-    ])
+    ]),
     imagen_sitio: new FormControl('', [
       Validators.minLength(3),
       Validators.required
@@ -54,12 +54,13 @@ export class InsertDatosPage implements OnInit {
   onSubmit = () => {
     if(this.isUpdate){
       const dat = {
-        datId: parseInt(this.datos['datId']),
+        id_sitio: parseInt(this.datos['id_sitio']),
         nombre_sitio: this.form.value.nombre_sitio,
         horario_sitio: this.form.value.horario_sitio,
         num_informacion: this.form.value.num_informacion,
         direccion_sitio: this.form.value.direccion_sitio,
-        datImagen: this.form.value.datImagen
+        barrio_sitio: this.form.value.barrio_sitio,
+        imagen_sitio: this.form.value.imagen_sitio
       }
       this.conexion.updateDatos(dat).subscribe(
         data => {
@@ -81,7 +82,7 @@ export class InsertDatosPage implements OnInit {
       )
     }
     if(this.isUpdatep){
-      const dat = {
+      const datp = {
         id_parque: parseInt(this.parques['id_parque']),
         nombre_parque: this.formp.value.nombre_parque,
         direccion_parque: this.formp.value.direccion_parque,
@@ -89,8 +90,8 @@ export class InsertDatosPage implements OnInit {
         deportes_parque: this.formp.value.deportes_parque,
         foto_parque: this.formp.value.foto_parque
       }
-      this.conexion.updateParques(dat).subscribe(
-        data => {
+      this.conexion.updateParques(datp).subscribe(
+        datap => {
           console.log('Registro actualizado')
           this.closeModal()
         }, error => {
@@ -98,9 +99,9 @@ export class InsertDatosPage implements OnInit {
         }
         )
     }else{
-      const dat = this.formp.value
-      this.conexion.insertParques(dat).subscribe(
-        data => {
+      const datp = this.formp.value
+      this.conexion.insertParques(datp).subscribe(
+        datap => {
           console.log('Registro guardado')
           this.closeModal()
         }, error => {
@@ -123,7 +124,8 @@ export class InsertDatosPage implements OnInit {
           horario_sitio: this.datos['horario_sitio'],
           num_informacion: this.datos['num_informacion'],
           direccion_sitio: this.datos['direccion_sitio'],
-          datImagen: this.datos['datImagen']
+          barrio_sitio: this.datos['barrio_sitio'],
+          imagen_sitio: this.datos['imagen_sitio']
         }
       )
     }

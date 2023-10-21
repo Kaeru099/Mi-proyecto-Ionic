@@ -19,22 +19,26 @@ export class CrearSitioPage implements OnInit {
   }
 
   form = new FormGroup({
-    datNombre: new FormControl('', [
+    nombre_sitio: new FormControl('', [
       Validators.minLength(3),
       Validators.required
     ]),
-    datApellido: new FormControl('', [
+    horario_sitio: new FormControl('', [
       Validators.minLength(4),
       Validators.required
     ]),
-    datEdad: new FormControl('', [
+    num_informacion: new FormControl('', [
       Validators.required
     ]),
-    datDeporte: new FormControl('', [
+    direccion_sitio: new FormControl('', [
       Validators.minLength(5),
       Validators.required
     ]),
-    datImagen: new FormControl('', [
+    barrio_sitio: new FormControl('', [
+      Validators.minLength(3),
+      Validators.required
+    ]),
+    imagen_sitio: new FormControl('', [
       Validators.minLength(3),
       Validators.required
     ])
